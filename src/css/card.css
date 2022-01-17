@@ -1,0 +1,19 @@
+.card--main-div{
+  border:1px solid black;
+  min-height: 40rem;
+  min-width:95vw;
+  max-width:95vw;
+  margin-top:1rem;
+  margin-bottom:4rem;
+  justify-self: center;
+  align-self:center;
+
+  display:grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap:5px;
+}
+
+.card--div{
+  border:1px solid black;
+  box-shadow: 1px 1px 3px 1px;
+}
