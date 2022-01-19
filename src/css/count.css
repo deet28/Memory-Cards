@@ -1,0 +1,7 @@
+.count--counter-div{
+  min-height: 50px;
+  font-size: 2rem;
+  display:flex;
+  flex-direction:row;
+  justify-content: space-around;
+}
