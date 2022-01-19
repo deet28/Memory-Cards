@@ -1,10 +1,9 @@
 .card--main-div{
   border:1px solid black;
-  min-height: 40rem;
+  min-height: 30rem;
   min-width:95vw;
   max-width:95vw;
   margin-top:1rem;
-  margin-bottom:4rem;
   justify-self: center;
   align-self:center;
 
@@ -14,6 +13,20 @@
 }
 
 .card--div{
-  border:1px solid black;
   box-shadow: 1px 1px 3px 1px;
+  max-height:18rem;
+  display: flex;
+  justify-content: center;
+  align-items:center;
+}
+
+.card--div img{
+  max-width:15rem;
+  max-height:15rem;
+  object-fit:contain;
+}
+
+.card--div:hover{
+  cursor:pointer;
+  box-shadow: 3px 3px 6px 6px;
 }
