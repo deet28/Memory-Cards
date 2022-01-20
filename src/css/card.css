@@ -16,6 +16,7 @@
   box-shadow: 1px 1px 3px 1px;
   max-height:18rem;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items:center;
 }

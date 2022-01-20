@@ -18,24 +18,21 @@ import Pilaf from '../DBPictures/Pilaf.png'
 import Murasaki from '../DBPictures/Murasaki.png'
 
 export default function Cards() {
-  const [goku, setGoku] = useState(Goku);  
-  const [krillin, setKrillin] = useState(Krillin);
-  const [roshi,setRoshi] = useState(MasterRoshi)
-  const [chichi,setChiChi] = useState(ChiChi);
-  const [bulma,setBulma] = useState(Bulma);
-
-  const [popo,setPopo] = useState(Popo);
-  const [shenron,setShenron] = useState(Shenron);
-  
-  const [yamcha,setYamcha] = useState(Yamcha)
-  const [tien,setTien] = useState(Tien);
-  const [yajirobe,setYajirobe] = useState(Yajirobe);
-
-  const [piccolo, setPiccolo] = useState(Piccolo)
-  const [mai, setMai] = useState(Mai)
-  const [jackiechun, setJackieChun] = useState(JackieChun)
-  const [pilaf,setPilaf] = useState(Pilaf)
-  const [murasaki, setMurasaki] = useState(Murasaki);
+  const [goku] = useState(Goku);  
+  const [krillin] = useState(Krillin);
+  const [roshi] = useState(MasterRoshi)
+  const [chichi] = useState(ChiChi);
+  const [bulma] = useState(Bulma);
+  const [popo] = useState(Popo);
+  const [shenron] = useState(Shenron);
+  const [yamcha] = useState(Yamcha)
+  const [tien] = useState(Tien);
+  const [yajirobe] = useState(Yajirobe);
+  const [piccolo] = useState(Piccolo)
+  const [mai] = useState(Mai)
+  const [jackiechun] = useState(JackieChun)
+  const [pilaf] = useState(Pilaf)
+  const [murasaki] = useState(Murasaki);
 
   const cardsArray = [
     {name:`Goku`,src:goku,id:uuidv4()},
@@ -56,50 +53,123 @@ export default function Cards() {
   ]; 
   
   const [cards, setCards] = useState(cardsArray.filter((index,i)=>i<6));
+  const [arrayTrack,setArrayTrack] = useState([])
+  
   const [curscore, setCurScore] = useState(0);
   const [hiscore,setHiScore] = useState(0);
-  const [arrayTrack,setArrayTrack] = useState([])
+  
+  const [unused,setUnused] = useState([
+    `Goku`,`Krillin`,`Master Roshi`,`Chi Chi`,`Bulma`,
+    `Popo`,`Shenron`,`Yamcha`,`Tien`,`Yajirobe`,`Piccolo`,
+    `Mai`,`Jackie Chun`,`Pilaf`,`Murasaki`
+  ]);
+
 
   
 function handleClick(e){
-    pickCard(e);
-    shuffleDeck();
-  }
+    shuffleDeck(e);
+}
+
+//checks card targets name
+//is it in array track? if not, 
+//is current score 14?
+//if not push the name to array track
+//set current score
+//remove from unselected list.
+
+//else 
+//set current score to hi score (if higher than hi score)
+//reset current score to 0
+//reset array track to 0
+//reset unused to initial list.
+
+//after this we shuffle the deck
+//after shuffled we ensure that at least one of the 
+//first six cards name belongs to unused list.  
 
 function pickCard(e){
   for(let i = 0; i < cardsArray.length; i++){
     if (e.target.name === cardsArray[i].name){
       if (arrayTrack.includes(e.target.name)==false){
-        arrayTrack.push(e.target.name);
-        setCurScore(curscore+1)
-        console.log(arrayTrack);
-      } else 
-      if (arrayTrack.includes(e.target.name)==true){
+        if(curscore === 14){
+         return winGame();
+        } else {
+          arrayTrack.push(e.target.name);
+          setCurScore(curscore+1)
+          addUnselected(e);
+        }
+        
+      } else if (arrayTrack.includes(e.target.name)==true){
         checkScore(); 
         setCurScore(curscore-curscore);
         setArrayTrack([]);
-        console.log(arrayTrack)
+        setUnused([`Goku`,`Krillin`,`Master Roshi`,`Chi Chi`,`Bulma`,
+        `Popo`,`Shenron`,`Yamcha`,`Tien`,`Yajirobe`,`Piccolo`,
+        `Mai`,`Jackie Chun`,`Pilaf`,`Murasaki`])
       }
-    }  
+    }   
   }
 }
+
   
-  function shuffleDeck(){
-    let i = cardsArray.length -1;
-    for(; i>0 ;i--){
+async function shuffleDeck(e){
+  await(pickCard(e));
+  
+  let i = cardsArray.length -1;
+  let count = 0;
+  outer:while(count < 1){
+    for(; i>0; i--){
       const j = Math.floor(Math.random() * (i+1));
       const temp = cardsArray[i];
       cardsArray[i] = cardsArray[j];
       cardsArray[j] = temp
     }
-    const shuffledArray = cardsArray.filter((index,i) => i < 6);
-    setCards(shuffledArray)
+    let tempArray = cardsArray.filter((index,i) => i < 6);
+    if (pickUnselected(tempArray)===true){
+      const shuffledArray = cardsArray.filter((index,i) => i < 6);
+      setCards(shuffledArray) 
+      count++;
+      console.log(unused);
+    } else {
+      continue outer;
+    }
   }
+ 
+}
 
   function checkScore(){
     if(curscore > hiscore){
       setHiScore(curscore);
     }
+  }
+
+function winGame(){
+      setCurScore(0);
+      setHiScore(15);
+      setArrayTrack([]);
+      setUnused([`Goku`,`Krillin`,`Master Roshi`,`Chi Chi`,`Bulma`,
+      `Popo`,`Shenron`,`Yamcha`,`Tien`,`Yajirobe`,`Piccolo`,
+      `Mai`,`Jackie Chun`,`Pilaf`,`Murasaki`])
+  }
+
+  function addUnselected(e){
+    setUnused(
+    unused.filter(index=>!(index==e.target.name))
+    )
+    return unused;
+  }
+  
+  function pickUnselected(array){
+  let arr = [];
+    for(let i = 0; i < array.length; i++){
+      arr.push(array[i].name)
+    }
+    for(let i = 0; i < arr.length; i++){
+      if (arr.includes(unused[i])){
+        return true;
+      }
+    }
+    return false;
   }
   
   return (
@@ -116,6 +186,7 @@ function pickCard(e){
           key = {index.id} 
           name = {index.name}
           onClick = {handleClick}></img>
+          <div className = "card--name">{index.name}</div>
         </div>
       )))}
     </div>
@@ -123,23 +194,16 @@ function pickCard(e){
   )
 }
 
+//Need to figure out how to always have at least
+//one unselected element on display in order for
+//this to work properly. 
 
-
-//function selectedCard(e){
-//  for(let i = 0; i < cardsArray.length; i++){
-//    if (e.target.name === cardsArray[i].name){
-//      if(cardsArray[i].selected == true){
-//        setCurScore(curscore-curscore)
-//      } else if (cardsArray[i].selected == false) {
-//      cardsArray[i].selected = true;
-//      setCurScore(curscore+1)
-//    }
+//let tempCount = 0;
+//while (tempCount < 1){
+//  let tempVar = cardsArray.filter((index,i)=>i<6);
+//  for(let i = 0; i < tempVar.length; i++){
+//  if (tempVar.includes(unused[i])){
+//    tempCount++;
+//    return tempVar;
 //  }
-//}
-//}
-
-//else if (arrayTrack.includes(e.target.name)==true){
-//  setArrayTrack([]);
-//  setCurScore(curscore-curscore);
-//  console.log(arrayTrack)
 //}
