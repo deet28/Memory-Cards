@@ -70,13 +70,11 @@ export default function Cards() {
     {name:`Pilaf`,src:pilaf,id:uuidv4()},
     {name:`Murasaki`,src:murasaki,id:uuidv4()}
   ]);
-  
+  const [selected,setSelected] = useState([]);
   const [cards, setCards] = useState(cardsArray.filter((index,i)=>i<6));
 
   const [curscore, setCurScore] = useState(0);
   const [hiscore,setHiScore] = useState(0);
-  
-  const [selected,setSelected] = useState([]);
   
 function handleClick(e){
   placeCards(e)
@@ -89,10 +87,8 @@ function pickCard(e){
       if (!(selected.some(index=>(index.name===e.target.name)))){
           picked = cardsArray.filter(index=>(index.name===e.target.name))
           setSelected([...selected,picked[0]]);
-          console.log(unselected.some(index => (index.name===e.target.name)))
           setUnselected(unselected.filter(index=>!(index.name===e.target.name)))
           setCurScore(curscore+1)
-          console.log(unselected);
       } else if (selected.some(index=>(index.name===e.target.name))){
         checkScore(); 
         setCurScore(curscore-curscore);
@@ -121,7 +117,6 @@ function pickCard(e){
 
 function shuffleDeck(e){
   pickCard(e);
-
   if(selected.length > 6){
   let notPicked = shuffle(unselected).filter((index,i) => i < 2)
   let picked = shuffle(selected).filter((index,i)=> i < 4);
@@ -150,6 +145,29 @@ function shuffle(input){
 function placeCards(e){
   if (curscore === 14 && (!(selected.some(index=>(index.name===e.target.name))))){
     return winGame();
+  } else if (curscore===14 && (selected.some(index=>(index.name===e.target.name)))){
+    checkScore(); 
+    setCurScore(curscore-curscore);
+    setSelected([]);
+    setUnselected([
+      {name:`Goku`,src:goku,id:uuidv4()},
+      {name:`Krillin`,src:krillin,id:uuidv4()},
+      {name:`Master Roshi`,src:roshi,id:uuidv4()},
+      {name:`Chi Chi`,src:chichi,id:uuidv4()},
+      {name:`Bulma`,src:bulma,id:uuidv4()},
+      {name:`Mr.Popo`,src:popo,id:uuidv4()},
+      {name:`Shenron`,src:shenron,id:uuidv4()},
+      {name:`Yamcha`,src:yamcha,id:uuidv4()},
+      {name:`Tien`,src:tien,id:uuidv4()},
+      {name:`Yajirobe`,src:yajirobe,id:uuidv4()},
+      {name:`Piccolo`,src:piccolo,id:uuidv4()},
+      {name:`Mai`,src:mai,id:uuidv4()},
+      {name:`Jackie Chun`,src:jackiechun,id:uuidv4()},
+      {name:`Pilaf`,src:pilaf,id:uuidv4()},
+      {name:`Murasaki`,src:murasaki,id:uuidv4()}
+    ])
+    setCards(cardsArray.filter((index,i)=>i<6));
+
   } else {
     const response = shuffleDeck(e);
     return setCards(response);
@@ -187,8 +205,7 @@ function winGame(){
     ]);
     setCards(cardsArray.filter((index,i)=>i<6));
 }
-  
-  return (
+return (
     <>
     <div className = "count--counter-div">
       <div className = "count--high-score">High Score:{hiscore}</div>
