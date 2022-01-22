@@ -5,3 +5,8 @@
   flex-direction:row;
   justify-content: space-around;
 }
+
+.test{
+  font-size: 12px;
+  display: inline-flex;
+}

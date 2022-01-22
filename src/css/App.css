@@ -12,9 +12,32 @@
   background-color: #282c34;
   min-height: 10vh;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
-  justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
+}
+.header--img{
+  left:0px !important;
+  justify-self: left !important;
+}
+.header--img img{
+  min-height:6rem;
+  max-height:6rem;
+  max-width:8rem;
+  justify-self: left;
+}
+
+.header--text{
+  display:flex;
+  flex-direction: column;
+  min-width:80vw;
+}
+
+h1{
+  margin-bottom:1rem;
+}
+
+h4{
+  margin-top:0.1rem;
 }
