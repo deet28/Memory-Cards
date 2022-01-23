@@ -1,0 +1,29 @@
+{
+  "files": {
+    "main.css": "/Memory-Cards/static/css/main.873a8db6.css",
+    "main.js": "/Memory-Cards/static/js/main.21cac9fc.js",
+    "static/media/Goku.png": "/Memory-Cards/static/media/Goku.96797517bef0586e0d77.png",
+    "static/media/Tien.png": "/Memory-Cards/static/media/Tien.c5eef34ba672b17233e7.png",
+    "static/media/Yamcha.png": "/Memory-Cards/static/media/Yamcha.212405ffcc5579e62d8f.png",
+    "static/media/Bulma.png": "/Memory-Cards/static/media/Bulma.bb4a7cb5ff68f15c975f.png",
+    "static/media/Shenron.png": "/Memory-Cards/static/media/Shenron.78314730ef70e40b14b6.png",
+    "static/media/Krillin.png": "/Memory-Cards/static/media/Krillin.73c52705f55fbdd395a0.png",
+    "static/media/Mai.png": "/Memory-Cards/static/media/Mai.b04bb5795ad1efea7c58.png",
+    "static/media/Piccolo.png": "/Memory-Cards/static/media/Piccolo.e0fe0f1ecd3caeb2d10f.png",
+    "static/media/Murasaki.png": "/Memory-Cards/static/media/Murasaki.c322c6e042c800c8f0ed.png",
+    "static/media/MrPopo.png": "/Memory-Cards/static/media/MrPopo.21c8a48c3b50dd51abac.png",
+    "static/media/Jackie-Chun.png": "/Memory-Cards/static/media/Jackie-Chun.09540a6f46d8ef3366f7.png",
+    "static/media/Chi-Chi.png": "/Memory-Cards/static/media/Chi-Chi.68a2cc72c094fdb55c67.png",
+    "static/media/DragonBall.png": "/Memory-Cards/static/media/DragonBall.959ba8e387da458d15f3.png",
+    "static/media/Master-Roshi.png": "/Memory-Cards/static/media/Master-Roshi.a885ba2ab667914e6ed8.png",
+    "static/media/Pilaf.png": "/Memory-Cards/static/media/Pilaf.65183f9c28e82506e53d.png",
+    "static/media/Yajirobe.png": "/Memory-Cards/static/media/Yajirobe.aefd7474f133b91ca8c5.png",
+    "index.html": "/Memory-Cards/index.html",
+    "main.873a8db6.css.map": "/Memory-Cards/static/css/main.873a8db6.css.map",
+    "main.21cac9fc.js.map": "/Memory-Cards/static/js/main.21cac9fc.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.873a8db6.css",
+    "static/js/main.21cac9fc.js"
+  ]
+}
