@@ -5,9 +5,6 @@ import DragonBall from '../DBPictures/DragonBall.png'
 function App() {
   return (
     <div className="App">
-      <div className ="test">
-        
-      </div>
       <header className="App-header">
         <div className = "header--img">
           <img src = {DragonBall}></img>
