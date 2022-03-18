@@ -10,3 +10,33 @@
   font-size: 12px;
   display: inline-flex;
 }
+.count--high-score{
+  font-size: 1.5rem;
+  margin-top:1rem;
+}
+.count--current-score{
+  font-size: 1.5rem;
+  margin-top:1rem;
+}
+
+@media screen and (max-width:510px){
+  .count--high-score{
+    font-size:1.1rem;
+    margin-top:1rem;
+  }
+  .count--current-score{
+    font-size: 1.1rem;
+    margin-top:1rem;
+  }
+}
+
+@media screen and (max-width:795px){
+  .count--high-score{
+    font-size:1.1rem;
+    margin-top:1rem;
+  }
+  .count--current-score{
+    font-size: 1rem;
+    margin-top:1rem;
+  }
+}

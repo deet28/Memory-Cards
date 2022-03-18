@@ -1,15 +1,16 @@
 .card--main-div{
   border:1px solid black;
   min-height: 30rem;
-  min-width:95vw;
-  max-width:95vw;
+  min-width:95%;
+  max-width:95%;
   margin-top:1rem;
+  margin-bottom:2rem;
   justify-self: center;
   align-self:center;
-
   display:grid;
   grid-template-columns: 1fr 1fr 1fr;
   grid-gap:5px;
+
 }
 
 .card--div{
@@ -30,4 +31,18 @@
 .card--div:hover{
   cursor:pointer;
   box-shadow: 3px 3px 6px 6px;
+}
+
+@media screen and (max-width:510px){
+  .card--div img{
+    max-width:9rem;
+    max-height:9rem;
+    object-fit:contain;
+  }
+}
+
+@media screen and (max-width:795px){
+  .card--main-div{
+    grid-template-columns: 1fr 1fr;
+  }
 }
